@@ -1,45 +1,45 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include <vector>
+#include <unordered_map>
+#include <iostream>
 
-// Return indices of two numbers that add up to target.
-// Assumes exactly one valid answer and the same element cannot be used twice.
-vector<int> twoSum(const vector<int>& nums, int target) {
-    unordered_map<long long, int> seen;  // value -> index
+// Function to find indices of two numbers in nums that add up to target.
+// Assumes exactly one valid solution exists and the same element cannot be used twice.
+// Returns indices in any order as a vector.
+std::vector<int> twoSum(const std::vector<int>& nums, int target) {
+    // Hash map to store value-to-index mappings for quick lookup.
+    std::unordered_map<long long, int> seen;
+    // Reserve space to reduce rehashing for large inputs, improving performance.
     seen.reserve(nums.size() * 2);
-    for (int i = 0; i < static_cast<int>(nums.size()); ++i) {
+    
+    // Iterate through the array to find the pair.
+    for (size_t i = 0; i < nums.size(); ++i) {
+        // Calculate the complement needed to reach target.
         long long need = static_cast<long long>(target) - nums[i];
+        // Check if complement exists in hash map.
         auto it = seen.find(need);
         if (it != seen.end()) {
-            return {it->second, i};  // any order is fine
+            // Found a pair; return their indices.
+            return {it->second, static_cast<int>(i)};
         }
+        // Store current number and its index.
         seen[nums[i]] = i;
     }
-    return {};  // should never reach here under the problem guarantee
+    // Unreachable given problem constraints (one solution exists).
+    return {};
 }
 
-// Simple driver for quick manual tests.
-//
+// Main function for testing the twoSum function with example cases.
 int main() {
-    // Example 1
-    {
-        vector<int> nums = {2, 7, 11, 15};
-        int target = 9;
-        auto ans = twoSum(nums, target);
-        cout << "[" << ans[0] << "," << ans[1] << "]\n";  // expected [0,1]
-    }
-    // Example 2
-    {
-        vector<int> nums = {3, 2, 4};
-        int target = 6;
-        auto ans = twoSum(nums, target);
-        cout << "[" << ans[0] << "," << ans[1] << "]\n";  // expected [1,2]
-    }
-    // Example 3
-    {
-        vector<int> nums = {3, 3};
-        int target = 6;
-        auto ans = twoSum(nums, target);
-        cout << "[" << ans[0] << "," << ans[1] << "]\n";  // expected [0,1]
+    // Define test cases and their corresponding targets.
+    std::vector<std::vector<int>> tests = {{2, 7, 11, 15}, {3, 2, 4}, {3, 3}};
+    std::vector<int> targets = {9, 6, 6};
+    
+    // Run each test case and print results.
+    for (size_t i = 0; i < tests.size(); ++i) {
+        // Call twoSum and store result.
+        auto ans = twoSum(tests[i], targets[i]);
+        // Output indices in format [x,y].
+        std::cout << "[" << ans[0] << "," << ans[1] << "]\n";
     }
     return 0;
 }
