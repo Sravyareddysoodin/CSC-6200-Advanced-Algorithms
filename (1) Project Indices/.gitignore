@@ -1,0 +1,18 @@
+# Editors
+.vscode/
+*.code-workspace
+
+# Word docs
+*.docx
+
+# Build outputs
+build/
+*.o
+*.obj
+*.exe
+*.out
+*.log
+
+# OS files
+Thumbs.db
+.DS_Store
