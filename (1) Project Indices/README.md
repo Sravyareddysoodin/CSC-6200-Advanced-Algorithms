@@ -18,6 +18,3 @@ Use an unordered_map from value to index. For each nums[i], compute `need = targ
 ## Complexity
 - **Time:** O(n)
 - **Space:** O(n)
-
-## AI usage disclosure
-I used ChatGPT to draft the initial implementation notes and README text, then reviewed, compiled, and tested locally. All code and comments were verified and edited by me.
