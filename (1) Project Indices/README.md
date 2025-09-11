@@ -1,20 +1,8 @@
-   # Two Sum in C++
+# Week 1 – Project Indices (Two Sum)
 
-This repository contains an O(n) hash map solution to the Two Sum problem.
+## Files
+- **two_sum.cpp**: Initial brute-force style solution using arrays.  
+- **revision.cpp**: Optimized solution implemented with a hash map inside `class Solution`, O(n) time complexity.
 
-## Build
-```bash
-g++ -std=c++17 -O2 -Wall -Wextra -o two_sum src/two_sum.cpp
-```
-
-## Run
-```bash
-./two_sum
-```
-
-## Approach
-Use an unordered_map from value to index. For each nums[i], compute `need = target - nums[i]`. If `need` exists in the map, return `{map[need], i}`. Otherwise insert `nums[i] -> i` and continue.
-
-## Complexity
-- **Time:** O(n)
-- **Space:** O(n)
+## Notes
+The assignment was a warm-up on arrays. The revision demonstrates a more advanced approach applying prior algorithm knowledge.  
